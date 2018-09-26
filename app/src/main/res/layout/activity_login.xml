@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Login">
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <TextView
+                android:id="@+id/title_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/e_lora"
+                android:gravity="center_horizontal"/>
+
+        <EditText
+                android:id="@+id/username_edit_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/username"
+                android:layout_marginHorizontal="@dimen/margin_horizintal"
+                android:inputType="text"
+                android:layout_below="@+id/title_txt"/>
+        <EditText
+                android:id="@+id/password_edit_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password"
+                android:layout_below="@+id/username_edit_txt"
+                android:layout_marginHorizontal="@dimen/margin_horizintal"
+                android:inputType="textPassword"/>
+        <TextView
+                android:id="@+id/forgot_password_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/password_edit_txt"
+                android:text="@string/forgot_password"
+                android:layout_alignEnd="@+id/password_edit_txt"/>
+
+        <Button
+                android:id="@+id/login_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/login"
+                android:layout_below="@+id/forgot_password_txt"
+                android:layout_marginHorizontal="@dimen/margin_horizintal"/>
+
+    </RelativeLayout>
+
+</ScrollView>

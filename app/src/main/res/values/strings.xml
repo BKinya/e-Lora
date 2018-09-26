@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">e-Lora</string>
+    <string name="e_lora">e-Lora</string>
+    <string name="username">username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="forgot_password">forgot password?</string>
+</resources>
