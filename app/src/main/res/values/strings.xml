@@ -1,8 +1,28 @@
 <resources>
     <string name="app_name">e-Lora</string>
-    <string name="e_lora">e-Lora</string>
-    <string name="username">username</string>
+    <string name="username">Username</string>
     <string name="password">Password</string>
-    <string name="login">Login</string>
+    <string name="login">Sign in</string>
     <string name="forgot_password">forgot password?</string>
+
+    <string name="e_lora_e">With</string>
+    <string name="about_ilab_link">About Ilab Africa</string>
+    <string name="iot_header">IoT Solutions</string>
+    <string name="title_activity_home">Home</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="dashboard">Agriculture</string>
+    <string name="zones">Zones</string>
+    <string name="data">Data</string>
+    <string name="charts">Charts</string>
+    <string name="faq">FAQ</string>
+    <string name="sign_out">Sign out</string>
+    <string name="altitude">Altitude:</string>
+    <string name="temperature">Temperature:</string>
+    <string name="time">Time:</string>
+    <string name="humidity">Humidity:</string>
 </resources>

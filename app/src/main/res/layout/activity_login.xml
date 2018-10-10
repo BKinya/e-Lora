@@ -5,48 +5,74 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Login">
+        tools:context=".activities.Login"
+        android:fillViewport="true">
     <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
+        <ImageView
+                android:id="@+id/ilab_logo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ilabafrica"
+                android:scaleX=".44567"
+                android:scaleY=".44567"
+                android:scaleType="fitCenter"
+                android:paddingTop="@dimen/padding_vertical"/>
+
+
         <TextView
                 android:id="@+id/title_txt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/e_lora"
-                android:gravity="center_horizontal"/>
+                android:gravity="center_horizontal"
+                android:text="@string/iot_header"
+                android:layout_below="@+id/ilab_logo"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_centerHorizontal="true"/>
 
         <EditText
                 android:id="@+id/username_edit_txt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/username"
-                android:layout_marginHorizontal="@dimen/margin_horizintal"
                 android:inputType="text"
-                android:layout_below="@+id/title_txt"/>
+                android:layout_below="@+id/title_txt"
+                android:layout_marginHorizontal="@dimen/margin_horizontal"
+                android:paddingVertical="@dimen/padding"/>
         <EditText
                 android:id="@+id/password_edit_txt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/password"
                 android:layout_below="@+id/username_edit_txt"
-                android:layout_marginHorizontal="@dimen/margin_horizintal"
-                android:inputType="textPassword"/>
+                android:inputType="textPassword"
+                android:layout_marginHorizontal="@dimen/margin_horizontal"
+                android:paddingVertical="@dimen/padding"/>
         <TextView
                 android:id="@+id/forgot_password_txt"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/password_edit_txt"
+                android:gravity="right"
                 android:text="@string/forgot_password"
-                android:layout_alignEnd="@+id/password_edit_txt"/>
+                android:layout_alignEnd="@+id/password_edit_txt"
+                android:padding="@dimen/padding"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAllCaps="true"
+                android:textColor="@color/text_color_orange"/>
 
         <Button
-                android:id="@+id/login_btn"
+                android:id="@+id/login_btn_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/login"
+                android:background="@color/text_color_orange"
+                android:layout_marginHorizontal="@dimen/margin_horizontal"
+
+                android:padding="@dimen/padding_vertical"
                 android:layout_below="@+id/forgot_password_txt"
-                android:layout_marginHorizontal="@dimen/margin_horizintal"/>
+                android:textColor="@color/color_white"/>
 
     </RelativeLayout>
 
