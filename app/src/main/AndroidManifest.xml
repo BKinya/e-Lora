@@ -18,14 +18,16 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activities.ilabwebSite">
-        </activity>
         <activity
                 android:name=".activities.Home"
                 android:label="@string/title_activity_home"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".activities.Agriculture">
+        <activity
+                android:name=".activities.Agriculture"
+                android:label="@string/title_activity_agriculture"
+                android:theme="@style/AppTheme.NoActionBar"
+                android:parentActivityName=".activities.Home">
         </activity>
     </application>
 

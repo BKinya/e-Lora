@@ -1,82 +1,92 @@
 package com.ilab.user.e_lora.activities;
 
-import Rest.ApiClient;
-import Rest.ApiInterface;
-import adapter.Data_adapter;
+import adapter.SectionsAdapter;
+import android.support.design.widget.TabLayout;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import com.ilab.user.e_lora.R;
-import model.Data_model;
-import model.HitsList;
-import model.HitsObject;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import android.support.v7.widget.Toolbar;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+
+import com.ilab.user.e_lora.R;
 
 public class Agriculture extends AppCompatActivity {
 
-    private ArrayList<Data_model> data_models;
+    /**
+     * The {@link android.support.v4.view.PagerAdapter} that will provide
+     * fragments for each of the sections. We use a
+     * {@link FragmentPagerAdapter} derivative, which will keep every
+     * loaded fragment in memory. If this becomes too memory intensive, it
+     * may be best to switch to a
+     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
+     */
+    private SectionsAdapter sectionsAdapter;
 
-    private static final String TAG = Agriculture.class.getSimpleName();
+    /**
+     * The {@link ViewPager} that will host the section contents.
+     */
+    private ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_argriculture);
+        setContentView(R.layout.activity_agriculture);
 
-        final RecyclerView recyclerView = findViewById(R.id.data_recyclerview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        // Create the adapter that will return a fragment for each of the three
+        // primary sections of the activity.
+        sectionsAdapter = new SectionsAdapter(getSupportFragmentManager());
 
-        data_models = new ArrayList<>();
+        // Set up the ViewPager with the sections adapter.
+        mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager.setAdapter(sectionsAdapter);
 
-        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
-        Call<HitsObject> call = apiInterface.get_most_recent_data();
-        call.enqueue(new Callback<HitsObject>() {
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(Call<HitsObject> call, Response<HitsObject> response) {
-                HitsList hitsList = new HitsList();
-                String jsonResponse ="";
-                try{
-                    Log.d(TAG, "onResponse: server response: " + response.toString());
-                    if(response.isSuccessful()){
-                        hitsList = response.body().getHits();
-                    }else{
-                        jsonResponse = response.errorBody().string();
-                    }
-                    Log.d(TAG, "onResponse: hits: " + hitsList);
-
-                    for(int i = 0; i < hitsList.getData().size(); i++) {
-
-                        data_models.add(hitsList.getData().get(i).getData_model());
-
-                    }
-                    recyclerView.setAdapter(new Data_adapter(data_models, R.layout.data_list_item, getApplicationContext()));
-                    Log.d(TAG, "SIZE"+data_models.size());
-
-
-                }catch (NullPointerException e){
-                    Log.d(TAG, "onresponse: nullpointerexception " + e.getMessage());
-                }catch (IndexOutOfBoundsException e){
-                    Log.d(TAG, "onresponse: IndexOutOfBound"+e.getMessage());
-                }catch (IOException e){
-                    Log.d(TAG, "onreponse: IOEXCEPYION"+e.getMessage());
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<HitsObject> call, Throwable t) {
-                Log.d(TAG, "KINYA"+t.getMessage());
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
         });
 
     }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_agriculture, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }

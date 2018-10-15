@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">e-Lora</string>
+    <string name="app_name">e-IoT</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">Sign in</string>
@@ -14,15 +14,27 @@
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
-    <string name="dashboard">Agriculture</string>
-    <string name="zones">Zones</string>
-    <string name="data">Data</string>
-    <string name="charts">Charts</string>
+    <string name="settings">Settings</string>
+    <string name="agriculture">Agriculture</string>
+    <string name="energy">Energy</string>
+    <string name="water">Water</string>
+    <string name="environment">Environment</string>
     <string name="faq">FAQ</string>
-    <string name="sign_out">Sign out</string>
+    <string name="sign_out">Sign Out</string>
     <string name="altitude">Altitude:</string>
     <string name="temperature">Temperature:</string>
     <string name="time">Time:</string>
     <string name="humidity">Humidity:</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="title_activity_agriculture">Agriculture</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_3">Tab 3</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello Beatrice</string>
+    <string name="data_title">Data</string>
+    <string name="chart_title">Charts</string>
 </resources>

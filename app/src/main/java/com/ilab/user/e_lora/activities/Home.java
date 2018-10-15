@@ -71,9 +71,11 @@ public class Home extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_agriculture) {
-            startActivity(new Intent(Home.this, Agriculture.class));
-        } else if (id == R.id.nav_energy) {
 
+            startActivity(new Intent(Home.this, Agriculture.class));
+
+        } else if (id == R.id.nav_agriculture) {
+            //startActivity(new Intent(Home.this,  charts.class));
         } else if (id == R.id.nav_environment) {
 
         } else if (id == R.id.nav_settings) {
