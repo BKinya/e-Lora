@@ -5,44 +5,29 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_dashboard"
-        android:icon="@drawable/baseline_dashboard_black_18dp"
-        android:title="@string/dashboard"/>
+                android:id="@+id/nav_dashboard"
+                android:icon="@drawable/baseline_dashboard_black_18dp"
+                android:title="@string/dashboard"/>
 
         <item
-                android:id="@+id/nav_agriculture"
+                android:id="@+id/nav_node"
 
-                android:title="@string/agriculture"/>
+                android:title="@string/node_title"/>
         <item
-                android:id="@+id/nav_energy"
+                android:id="@+id/nav_data"
 
-                android:title="@string/energy"/>
+                android:title="@string/data_title"/>
         <item
-                android:id="@+id/nav_environment"
+                android:id="@+id/nav_charts"
 
-                android:title="@string/water"/>
+                android:title="@string/chart_title"
+                android:icon="@drawable/baseline_show_chart_black_18dp"/>
+
         <item
-                android:id="@+id/nav_water"
-
-                android:title="@string/environment"/>
-
+                android:id="@+id/nav_sign_out"
+                android:title="@string/sign_out"/>
 
     </group>
 
-    <item android:title="">
-        <menu>
-            <item
-                    android:id="@+id/nav_settings"
-
-                    android:title="@string/settings"/>
-            <item
-                    android:id="@+id/nav_faq"
-
-                    android:title="@string/faq"/>
-            <item
-                    android:id="@+id/nav_sign_out"
-                    android:title="@string/sign_out"/>
-        </menu>
-    </item>
 
 </menu>

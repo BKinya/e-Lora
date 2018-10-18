@@ -29,12 +29,22 @@
     <string name="title_activity_agriculture">Agriculture</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
-    <string name="tab_text_3">Tab 3</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello Beatrice</string>
+    <string name="node_title">Nodes</string>
     <string name="data_title">Data</string>
     <string name="chart_title">Charts</string>
+    <string name="location">Location</string>
+    <string name="average_temperature">Average Temperature</string>
+    <string name="average_humidity">Average Humidity</string>
+    <string name="view_charts">View Charts</string>
+    <string name="bmp">BMP:</string>
+    <string name="signal_level">Signal Level</string>
+    <string name="battery_level">Battery Level</string>
+    <string-array name="nodes_spinner_elements">
+        <item>Select Node</item>
+        <item>lotech</item>
+        <item>telcom</item>
+    </string-array>
 </resources>

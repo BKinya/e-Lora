@@ -49,20 +49,6 @@ public class Home extends AppCompatActivity
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -70,17 +56,14 @@ public class Home extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_agriculture) {
+        if (id == R.id.nav_dashboard){
 
-            startActivity(new Intent(Home.this, Agriculture.class));
-
-        } else if (id == R.id.nav_agriculture) {
-            //startActivity(new Intent(Home.this,  charts.class));
-        } else if (id == R.id.nav_environment) {
-
-        } else if (id == R.id.nav_settings) {
-
-        } else if (id == R.id.nav_faq) {
+        }else if (id == R.id.nav_node){
+            startActivity(new Intent(Home.this, Node.class));
+        }else if (id == R.id.nav_data){
+                startActivity(new Intent(Home.this, Data.class));
+        }else if (id == R.id.nav_charts){
+            startActivity(new Intent(Home.this, Charts.class));
 
         }
 

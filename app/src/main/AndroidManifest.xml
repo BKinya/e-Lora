@@ -24,10 +24,16 @@
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-                android:name=".activities.Agriculture"
-                android:label="@string/title_activity_agriculture"
-                android:theme="@style/AppTheme.NoActionBar"
+                android:name=".activities.Node"
+                android:label="@string/node_title"
                 android:parentActivityName=".activities.Home">
+        </activity>
+        <activity
+                android:name=".activities.Data"
+                android:label="@string/data_title"
+                android:parentActivityName=".activities.Home">
+        </activity>
+        <activity android:name=".activities.Charts">
         </activity>
     </application>
 
