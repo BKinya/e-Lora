@@ -33,7 +33,9 @@
                 android:label="@string/data_title"
                 android:parentActivityName=".activities.Home">
         </activity>
-        <activity android:name=".activities.Charts">
+        <activity android:name=".activities.Charts"
+        android:label="@string/chart_title"
+        android:parentActivityName=".activities.Home">
         </activity>
     </application>
 

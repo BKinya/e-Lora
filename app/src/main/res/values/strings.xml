@@ -40,11 +40,11 @@
     <string name="average_humidity">Average Humidity</string>
     <string name="view_charts">View Charts</string>
     <string name="bmp">BMP:</string>
-    <string name="signal_level">Signal Level</string>
-    <string name="battery_level">Battery Level</string>
-    <string-array name="nodes_spinner_elements">
+    <string name="signal_level">Signal Level:</string>
+    <string name="battery_level">Battery Level:</string>
+    <string-array name="nodes_elements">
         <item>Select Node</item>
-        <item>lotech</item>
-        <item>telcom</item>
+        <item>Node 1</item>
+        <item>Node 2</item>
     </string-array>
 </resources>
