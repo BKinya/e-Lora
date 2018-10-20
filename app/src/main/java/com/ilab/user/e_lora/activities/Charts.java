@@ -20,17 +20,13 @@ public class Charts extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_charts);
 
-        nodes_array = getResources().getStringArray(R.array.nodes_elements);
-        ListView listView = findViewById(R.id.node_listview);
 
-        //Bindning resources array to the ListAdapter
-        ListAdapter listAdapter = new ArrayAdapter<String>(this, R.layout.node_list_item,nodes_array);
-        listView.setAdapter(listAdapter);
         addfragment();
 
 
 
     }
+
 
     //add fragment
     private void addfragment(){

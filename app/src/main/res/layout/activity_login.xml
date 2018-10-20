@@ -18,7 +18,7 @@
                 android:scaleX=".44567"
                 android:scaleY=".44567"
                 android:scaleType="fitCenter"
-                android:paddingTop="@dimen/padding_vertical"/>
+                android:paddingTop="@dimen/padding"/>
 
 
 
@@ -60,7 +60,7 @@
                 android:text="@string/login"
                 android:background="@color/text_color_orange"
                 android:layout_marginHorizontal="@dimen/margin_horizontal"
-                android:padding="@dimen/padding_vertical"
+                android:padding="@dimen/padding"
                 android:layout_below="@+id/forgot_password_txt"
                 android:textColor="@color/color_white"/>
 

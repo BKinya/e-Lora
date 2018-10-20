@@ -1,77 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <RelativeLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
+<!--single list item -->
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/data_list_item_layout"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginHorizontal="@dimen/margin_horizontal"
+        android:orientation="vertical">
+    <TextView
+            android:id="@+id/label_txtview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/data_list_item_layout"
-        android:padding="@dimen/padding">
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:padding="@dimen/padding"
+            android:textColor="@color/color_black"/>
 
-        <TextView
-                android:id="@+id/altitude_txt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:text="@string/altitude"
-                android:layout_marginHorizontal="@dimen/margin_horizontal"/>
-
-        <TextView
-                android:id="@+id/altitude_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:layout_toRightOf="@+id/altitude_txt"/>
-
-        <TextView
-                android:id="@+id/temp_txt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:text="@string/temperature"
-                android:layout_marginHorizontal="@dimen/margin_horizontal"
-                android:layout_below="@+id/altitude_txt"/>
-
-        <TextView
-                android:id="@+id/temp_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:layout_toRightOf="@+id/temp_txt"
-                android:layout_below="@+id/altitude_value"/>
-
-        <TextView
-                android:id="@+id/humidity_txt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:text="@string/humidity"
-                android:layout_marginHorizontal="@dimen/margin_horizontal"
-                android:layout_below="@+id/temp_txt"/>
-
-        <TextView
-                android:id="@+id/humidity_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:layout_toRightOf="@+id/humidity_txt"
-                android:layout_below="@+id/temp_value"/>
-
-        <TextView
-                android:id="@+id/time_txt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:text="@string/time"
-                android:layout_marginHorizontal="@dimen/margin_horizontal"
-                android:layout_below="@+id/humidity_txt"/>
-
-        <TextView
-                android:id="@+id/time_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:layout_toRightOf="@+id/time_txt"
-                android:layout_below="@+id/humidity_value"/>
+    <TextView
+            android:id="@+id/value_txtview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
 
-    </RelativeLayout>
+</LinearLayout>
 

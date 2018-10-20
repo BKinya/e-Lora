@@ -8,6 +8,17 @@ public class metadata_elements {
     @SerializedName("time")
     private Date time;
 
+    @SerializedName("frequency")
+    private float frequency;
+
+    public void setFrequency(float frequency) {
+        this.frequency = frequency;
+    }
+
+    public float getFrequency() {
+        return frequency;
+    }
+
     public metadata_elements(Date time) {
         this.time = time;
     }

@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiClient {
 
     //base url
-    private static final String BASE_URL = "https://search-iot-data-analytics-okmamccstll4hvuv6gqulzqz2u.us-east-1.es.amazonaws.com/lotech/";
+    private static final String BASE_URL = "https://search-iot-data-analytics-okmamccstll4hvuv6gqulzqz2u.us-east-1.es.amazonaws.com/";
     private static Retrofit retrofit = null;
 
     public static Retrofit getClient(){

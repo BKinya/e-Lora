@@ -22,9 +22,9 @@
     <string name="faq">FAQ</string>
     <string name="sign_out">Sign Out</string>
     <string name="altitude">Altitude:</string>
-    <string name="temperature">Temperature:</string>
+    <string name="temperature">Temperature(*C)</string>
     <string name="time">Time:</string>
-    <string name="humidity">Humidity:</string>
+    <string name="humidity">Humidity(%)</string>
     <string name="dashboard">Dashboard</string>
     <string name="title_activity_agriculture">Agriculture</string>
     <string name="action_settings">Settings</string>
@@ -36,15 +36,16 @@
     <string name="data_title">Data</string>
     <string name="chart_title">Charts</string>
     <string name="location">Location</string>
-    <string name="average_temperature">Average Temperature</string>
-    <string name="average_humidity">Average Humidity</string>
+    <string name="average_temperature">Average Temperature(*C)</string>
+    <string name="average_humidity">Average Humidity(%)</string>
     <string name="view_charts">View Charts</string>
-    <string name="bmp">BMP:</string>
-    <string name="signal_level">Signal Level:</string>
-    <string name="battery_level">Battery Level:</string>
+    <string name="bmp">Pressure</string>
+    <string name="signal_level">Signal Level</string>
+    <string name="battery_level">Battery Level</string>
     <string-array name="nodes_elements">
         <item>Select Node</item>
         <item>Node 1</item>
         <item>Node 2</item>
     </string-array>
+
 </resources>

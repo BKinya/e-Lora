@@ -30,7 +30,7 @@ public class Node extends AppCompatActivity implements AdapterView.OnItemSelecte
 
     }
 
-    public void loadSpinner(Spinner spinner){
+    private void loadSpinner(Spinner spinner){
 
 
 

@@ -12,8 +12,12 @@ import java.util.List;
 
 public interface ApiInterface {
 
-    @GET("_search/?size=5&sort=metadata.time:desc")
-    Call<HitsObject> get_most_recent_data();
+
+    @GET("lotech/_search/?size=1&sort=metadata.time:desc")
+    Call<HitsObject> get_last_record_l();
+
+    @GET("telkom/_search/?size=1&sort=metadata.time:desc")
+    Call<HitsObject>get_last_record_t();
 
 
 
