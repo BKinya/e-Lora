@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import com.ilab.user.e_lora.R;
 
+
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -30,7 +31,10 @@ public class Home extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
     }
+
 
     @Override
     public void onBackPressed() {
