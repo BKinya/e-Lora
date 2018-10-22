@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "779947218689",
+    "firebase_url": "https://iot-ilab.firebaseio.com",
+    "project_id": "iot-ilab",
+    "storage_bucket": "iot-ilab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:779947218689:android:69d9db22275bee9a",
+        "android_client_info": {
+          "package_name": "com.ilab.user.e_lora"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "779947218689-of62293i5rpoqe8q30orvv9n2vn6p04v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpk2BB2oJgkGwQHxdO-fYavzz-hE1jmac"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

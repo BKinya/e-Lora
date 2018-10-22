@@ -66,11 +66,7 @@ public class Home extends AppCompatActivity
             startActivity(new Intent(Home.this, Node.class));
         }else if (id == R.id.nav_data){
                 startActivity(new Intent(Home.this, Data.class));
-        }else if (id == R.id.nav_charts){
-            startActivity(new Intent(Home.this, Charts.class));
-
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

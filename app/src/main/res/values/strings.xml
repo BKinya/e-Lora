@@ -40,7 +40,7 @@
     <string name="average_humidity">Average Humidity(%)</string>
     <string name="view_charts">View Charts</string>
     <string name="bmp">Pressure</string>
-    <string name="signal_level">Signal Level</string>
+    <string name="signal_level">Frequency</string>
     <string name="battery_level">Battery Level</string>
     <string-array name="nodes_elements">
         <item>Select Node</item>

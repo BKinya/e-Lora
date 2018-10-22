@@ -4,9 +4,21 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activities.fragments.HumidityFragment"
-android:orientation="vertical">
+        tools:context=".activities.fragments.Graph_telkom"
+        android:orientation="vertical">
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/temperature"
+            android:textAppearance="?android:attr/textAppearanceMedium"
 
+            android:gravity="center_horizontal"
+            android:padding="@dimen/padding"/>
+
+    <com.jjoe64.graphview.GraphView
+            android:id="@+id/temp_graph"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"/>
 
     <TextView
             android:layout_width="match_parent"

@@ -27,7 +27,7 @@ public class Data extends AppCompatActivity implements AdapterView.OnItemSelecte
     //views
     ListView listView;
     Spinner node_spinner;
-    TextView temp_txtview, humidity_txtview, bmp_txtview, signal_txtview,  battery_txtview, bmp_label_txtview;
+    TextView temp_txtview, humidity_txtview, bmp_txtview, signal_txtview,  battery_txtview, battery_level_label, bmp_label_txtview;
 
 
     ApiInterface apiInterface;
@@ -40,6 +40,7 @@ public class Data extends AppCompatActivity implements AdapterView.OnItemSelecte
         setContentView(R.layout.activity_data);
 
         loadSpinner(node_spinner);
+        initializeViews();
 
 
     }
@@ -51,7 +52,12 @@ public class Data extends AppCompatActivity implements AdapterView.OnItemSelecte
         bmp_txtview = findViewById(R.id.BMP_value_txtview);
         signal_txtview = findViewById(R.id.signal_level_value_txtview);
         battery_txtview = findViewById(R.id.battery_level_value_txtview);
+        battery_level_label = findViewById(R.id.battery_level_label);
         bmp_label_txtview = findViewById(R.id.BMP_label);
+
+        battery_level_label.setVisibility(View.GONE);
+        battery_txtview.setVisibility(View.GONE);
+
 
     }
 
@@ -128,6 +134,12 @@ public class Data extends AppCompatActivity implements AdapterView.OnItemSelecte
                     bmp_txtview.setText(new Long(hitsList.getData().get(0).getData_model().getPayload().getPressure()).toString());
                     signal_txtview.setText(new Float(hitsList.getData().get(0).getData_model().getMetadata().getFrequency()).toString());
 
+                    battery_txtview.setVisibility(View.GONE);
+                    battery_level_label.setVisibility(View.GONE);
+                    bmp_txtview.setVisibility(View.VISIBLE);
+                    bmp_label_txtview.setVisibility(View.VISIBLE);
+
+
 
 
                 }catch (NullPointerException e){
@@ -177,7 +189,8 @@ public class Data extends AppCompatActivity implements AdapterView.OnItemSelecte
                     //hide unnecessary textviews
                     bmp_label_txtview.setVisibility(View.GONE);
                     bmp_txtview.setVisibility(View.GONE);
-
+                    battery_txtview.setVisibility(View.GONE);
+                    battery_level_label.setVisibility(View.GONE);
                     signal_txtview.setText(new Float(hitsList.getData().get(0).getData_model().getMetadata().getFrequency()).toString());
 
 

@@ -26,7 +26,7 @@ public class Node extends AppCompatActivity implements AdapterView.OnItemSelecte
     //views
     private Spinner nodes_spinner;
     private Button viewCharts_btn;
-    private TextView avgTemp_txtview, avgHumidity_txtview;
+    private TextView avgTemp_txtview, avgHumidity_txtview, node_txtview;
 
     ApiInterface apiInterface;
 
@@ -34,9 +34,13 @@ public class Node extends AppCompatActivity implements AdapterView.OnItemSelecte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_node);
+
         nodes_spinner = findViewById(R.id.node_spinner);
+        node_txtview = findViewById(R.id.location_txtview);
+
+        node_txtview.setVisibility(View.GONE);
         loadSpinner(nodes_spinner);
-        isButtonClicked(viewCharts_btn);
+        isButtonClicked();
 
 
 
@@ -81,12 +85,22 @@ public class Node extends AppCompatActivity implements AdapterView.OnItemSelecte
     }
 
     //handle button click event
-    private void isButtonClicked(Button button) {
-        button = findViewById(R.id.node_charts_btn);
-        button.setOnClickListener(new View.OnClickListener() {
+    private void isButtonClicked() {
+        nodes_spinner = findViewById(R.id.node_spinner);
+        String node_selected = nodes_spinner.getSelectedItem().toString();
+
+        viewCharts_btn = findViewById(R.id.node_charts_btn);
+        viewCharts_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Node.this, Charts.class));
+                String node_selected = nodes_spinner.getSelectedItem().toString();
+
+                Intent intent = new Intent(Node.this, Charts.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("Node", node_selected);
+
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
     }

@@ -10,33 +10,11 @@
         android:layout_marginHorizontal="@dimen/margin_horizontal">
 
 
-    <TextView
+    <FrameLayout
+            android:id="@+id/graph_framelayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/temperature"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-
-            android:gravity="center_horizontal"
-            android:padding="@dimen/padding"/>
-
-    <com.jjoe64.graphview.GraphView
-            android:id="@+id/temp_graph"
-            android:layout_width="match_parent"
-            android:layout_height="180dp"/>
-
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/humidity"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:gravity="center_horizontal"
-            android:padding="@dimen/padding"/>
-
-    <com.jjoe64.graphview.GraphView
-            android:id="@+id/humidity_graph"
-            android:layout_width="match_parent"
-            android:layout_height="180dp"/>
-
+    />
 
 
 
