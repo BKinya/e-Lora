@@ -1,22 +1,26 @@
 package model;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class metadata_elements {
     @SerializedName("time")
     private Date time;
 
-    @SerializedName("frequency")
-    private float frequency;
 
-    public void setFrequency(float frequency) {
-        this.frequency = frequency;
+    @SerializedName("gateways")
+    private ArrayList<Gateway> gateways;
+
+    public ArrayList<Gateway> getGateways() {
+        return gateways;
     }
 
-    public float getFrequency() {
-        return frequency;
+    public void setGateways(ArrayList<Gateway> gateways) {
+        this.gateways = gateways;
     }
 
     public metadata_elements(Date time) {
@@ -30,4 +34,6 @@ public class metadata_elements {
     public void setTime(Date time) {
         this.time = time;
     }
+
+
 }

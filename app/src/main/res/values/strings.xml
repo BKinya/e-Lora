@@ -40,12 +40,18 @@
     <string name="average_humidity">Average Humidity(%)</string>
     <string name="view_charts">View Charts</string>
     <string name="bmp">Pressure</string>
-    <string name="signal_level">Frequency</string>
+    <string name="signal_level">Signal Level</string>
     <string name="battery_level">Battery Level</string>
     <string-array name="nodes_elements">
-        <item>Select Node</item>
         <item>Node 1</item>
         <item>Node 2</item>
     </string-array>
+    <string name="uname">admin</string>
+    <string name="upass">012345</string>
+    <string name="title_activity_nodes">Nodes</string>
+    <string name="last_seen">Last Seen</string>
+    <string name="lux">Lux</string>
+    <string name="soil_moisture">Soil moisture</string>
+    <string name="node_1">Node 1</string>
 
 </resources>

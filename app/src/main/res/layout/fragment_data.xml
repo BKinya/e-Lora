@@ -1,35 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-<ScrollView
+<LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".activities.Data"
->
+        android:layout_height="wrap_content"
+        tools:context=".activities.fragments.Data"
+android:gravity="center_vertical"
+android:orientation="vertical">
 
-    <!--TODO replace the spinner with textview when an item is selscted-->
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-    android:layout_gravity="center_vertical">
+            android:layout_gravity="center_vertical">
 
-        <Spinner
-                android:id="@+id/data_nodes_spinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_horizontal"
-                android:padding="@dimen/margin_horizontal"
-                android:textAlignment="center"/>
 
         <TextView
                 android:id="@+id/temp_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/padding"
+                android:padding="@dimen/dp6_padding"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/color_black"
                 android:text="@string/temperature"
@@ -41,13 +35,13 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textAlignment="center"
-                android:padding="@dimen/padding"/>
+                android:padding="@dimen/dp6_padding"/>
 
         <TextView
                 android:id="@+id/humidity_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/padding"
+                android:padding="@dimen/dp6_padding"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/color_black"
                 android:text="@string/humidity"
@@ -59,13 +53,13 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textAlignment="center"
-                android:padding="@dimen/padding"/>
+                android:padding="@dimen/dp6_padding"/>
 
         <TextView
                 android:id="@+id/BMP_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/padding"
+                android:padding="@dimen/dp6_padding"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/color_black"
                 android:text="@string/bmp"
@@ -77,45 +71,48 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textAlignment="center"
-                android:padding="@dimen/padding"/>
+                android:padding="@dimen/dp6_padding"/>
 
         <TextView
-                android:id="@+id/signal_level_label"
+                android:id="@+id/soil_moisture_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/padding"
+                android:padding="@dimen/dp6_padding"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/color_black"
-                android:text="@string/signal_level"
+                android:text="@string/soil_moisture"
                 android:textAlignment="center"/>
 
         <TextView
-                android:id="@+id/signal_level_value_txtview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textAlignment="center"
-                android:padding="@dimen/padding"/>
-
-        <TextView
-                android:id="@+id/battery_level_label"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/color_black"
-                android:text="@string/battery_level"
-                android:textAlignment="center"/>
-
-        <TextView
-                android:id="@+id/battery_level_value_txtview"
+                android:id="@+id/soil_moisture_value_txtview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textAlignment="center"
-                android:padding="@dimen/padding"/>
+                android:padding="@dimen/dp6_padding"/>
+
+
+
+        <TextView
+                android:id="@+id/lux_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp6_padding"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/color_black"
+                android:text="@string/lux"
+                android:textAlignment="center"/>
+
+        <TextView
+                android:id="@+id/lux_value_txtview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAlignment="center"
+                android:padding="@dimen/dp6_padding"/>
 
 
     </LinearLayout>
+    </ScrollView>
 
-</ScrollView>
+</LinearLayout>

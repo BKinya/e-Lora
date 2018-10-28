@@ -3,9 +3,11 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".activities.fragments.Graph_telkom"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        tools:context=".activities.fragments.Charts"
+        android:orientation="vertical"
+android:layout_marginHorizontal="@dimen/margin_horizontal">
+
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
