@@ -19,23 +19,23 @@
                 android:gravity="center_vertical">
 
 
-            <TextView
-                    android:id="@+id/location_label_txtview"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/dp6_padding"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/color_black"
-                    android:text="@string/location"
-                    android:textAlignment="center"/>
+            <!--<TextView-->
+                    <!--android:id="@+id/location_label_txtview"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:padding="@dimen/dp6_padding"-->
+                    <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+                    <!--android:textColor="@color/color_black"-->
+                    <!--android:text="@string/location"-->
+                    <!--android:textAlignment="center"/>-->
 
-            <TextView
-                    android:id="@+id/location_value_txtview"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:padding="@dimen/dp6_padding"
-                    android:textAlignment="center"/>
+            <!--<TextView-->
+                    <!--android:id="@+id/location_value_txtview"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+                    <!--android:padding="@dimen/dp6_padding"-->
+                    <!--android:textAlignment="center"/>-->
 
             <TextView
                     android:id="@+id/last_seen_txtview"

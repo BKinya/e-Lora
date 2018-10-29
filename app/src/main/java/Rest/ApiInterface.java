@@ -14,7 +14,7 @@ import retrofit2.http.Path;
 
 public interface ApiInterface {
 
-    //TODO use parameterized queries to specify index and value you are aggregating
+
     //Get documents for the last one hour
     @GET("{index}/_search?sort=metadata.time:desc&source=\n" +
             "{\"query\":{\"range\":{\"metadata.time\":{\"gte\":\"now-1h\", \"lte\":\"now\"}}}}&source_content_type=application/json")

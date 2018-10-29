@@ -4,9 +4,13 @@ import Rest.ApiInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.*;
 import com.ilab.user.e_lora.R;
+import com.ilab.user.e_lora.activities.fragments.Charts;
+import com.ilab.user.e_lora.activities.fragments.Data;
+import com.ilab.user.e_lora.activities.fragments.Node;
 
 public class Node_main extends AppCompatActivity {
 
@@ -33,7 +37,14 @@ public class Node_main extends AppCompatActivity {
         node_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                startActivity(new Intent(Node_main.this, Nodes_data_charts.class));
+                String node_selected = (String) parent.getItemAtPosition(position);
+
+                Intent intent = new Intent(Node_main.this, Nodes_data_charts.class);
+                intent.putExtra("node", node_selected);
+
+
+
+                startActivity(intent);
             }
         });
 

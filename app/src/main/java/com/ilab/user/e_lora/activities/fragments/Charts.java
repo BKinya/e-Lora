@@ -32,11 +32,15 @@ public class Charts extends Fragment {
 
     //graphview
     private GraphView graphView_t, graphView_h;
+    View rootView;
+
+    private Bundle bundle;
 
 
     ArrayList<Long> temp_value;
     ArrayList<Long> humidity_value;
     ArrayList<Date> time_value;
+    String selected_node;
 
     //simpleDateFormatter
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
@@ -51,13 +55,27 @@ public class Charts extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_charts, container, false);
+        rootView = inflater.inflate(R.layout.fragment_charts, container, false);
 
         graphView_t = rootView.findViewById(R.id.temp_graph);
         graphView_h = rootView.findViewById(R.id.humidity_graph);
-        drawGraphs("lotech", rootView);
+
 
         return rootView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        bundle = this.getArguments();
+        selected_node = bundle.getString("node");
+
+        if (selected_node.equals("Node 1")){
+            drawGraphs("lotech", rootView);
+        }else if (selected_node.equals("Node 2")){
+            drawGraphs("telkom", rootView);
+        }
+
     }
 
     public void drawGraphs(String index, View view) {
@@ -72,7 +90,7 @@ public class Charts extends Fragment {
                 for (int i = 0; i < hitsList.getData().size(); i++) {
                     time_value.add(hitsList.getData().get(i).getData_model().getMetadata().getTime());
                     temp_value.add(hitsList.getData().get(i).getData_model().getPayload().getTemperature());
-                    humidity_value.add(hitsList.getData().get(i).getData_model().getPayload().getTemperature());
+                    humidity_value.add(hitsList.getData().get(i).getData_model().getPayload().getHumidityy());
 
 
                 }

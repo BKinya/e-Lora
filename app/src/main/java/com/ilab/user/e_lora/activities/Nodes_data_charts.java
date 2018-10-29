@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 
+import android.util.Log;
 import com.ilab.user.e_lora.R;
 import com.ilab.user.e_lora.activities.fragments.Charts;
 import com.ilab.user.e_lora.activities.fragments.Data;
@@ -36,17 +37,36 @@ public class Nodes_data_charts extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
+    }
 
-
+    public  String receiveSelectedNo(){
+        String node_selected = getIntent().getStringExtra("node");
+        return  node_selected;
     }
 
 
     private void setViewPager(ViewPager viewPager){
+
+        Bundle bundle = new Bundle();
+        bundle.putString("node", receiveSelectedNo());
+
+        Node node = new Node();
+        node.setArguments(bundle);
+
+        Data data = new Data();
+        data.setArguments(bundle);
+
+        Charts charts = new Charts();
+        charts.setArguments(bundle);
+
+
         SectionPageAdapter adapter = new SectionPageAdapter(getSupportFragmentManager());
-        adapter.addFragment(new Node(), "Node");
-        adapter.addFragment(new Data(), "Data");
-        adapter.addFragment(new Charts(), "Charts");
+        adapter.addFragment(node, "Node");
+        adapter.addFragment(data, "Data");
+        adapter.addFragment(charts, "Charts");
         viewPager.setAdapter(adapter);
+
+
 
 
 

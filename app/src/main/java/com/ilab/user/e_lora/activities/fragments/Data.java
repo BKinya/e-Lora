@@ -27,7 +27,13 @@ public class Data extends Fragment {
     ApiInterface apiInterface;
     PayLoadResponses payLoadResponses;
 
-    private TextView temp_value_txtview, humidity_value_txtview, bmp_value_txtview, soilMoisture_value, lux_value;
+    String node_selected;
+
+    private Bundle mbundle;
+
+    private TextView temp_value_txtview, humidity_value_txtview, bmp_value_txtview, soilMoisture_value, lux_value,
+    bmp_label_txtview, soilmoisture_label_txtview, lux_label;
+    View rootview;
 
     public Data() {
         // Required empty public constructor
@@ -37,21 +43,45 @@ public class Data extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootview = inflater.inflate(R.layout.fragment_data, container, false);
+        rootview = inflater.inflate(R.layout.fragment_data, container, false);
         // Inflate the layout for this fragment
-        getData("lotech", rootview);
+
         return rootview;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        mbundle = this.getArguments();
+        node_selected = mbundle.getString("node");
 
-    public void getData(String index, final View view){
+
+        if (node_selected.equals("Node 1")){
+            getData("lotech", rootview);
+        }else if (node_selected.equals("Node 2")){
+            getData("telkom", rootview);
+        }
+    }
+
+    public void getData(final String index, final View view){
         payLoadResponses = new PayLoadResponses();
         payLoadResponses.get_most_recent_documents(index, new PayLoadResponsesCallbacks() {
             @Override
             public void onSuccess(HitsList hitsList) {
                 getViews(view);
+
+
                 temp_value_txtview.setText(new Long(hitsList.getData().get(0).getData_model().getPayload().getTemperature()).toString());
                 humidity_value_txtview.setText(new Long(hitsList.getData().get(0).getData_model().getPayload().getHumidityy()).toString());
+
+                if (index.equals("telkom")){
+                    bmp_label_txtview.setVisibility(View.GONE);
+                    bmp_value_txtview.setVisibility(View.GONE);
+                    soilmoisture_label_txtview.setVisibility(View.GONE);
+                    soilMoisture_value.setVisibility(View.GONE);
+                    lux_label.setVisibility(View.GONE);
+                    lux_value.setVisibility(View.GONE);
+                }
                 bmp_value_txtview.setText(new Long(hitsList.getData().get(0).getData_model().getPayload().getPressure()).toString());
                 soilMoisture_value.setText(new Long(hitsList.getData().get(0).getData_model().getPayload().getSoil_moisture()).toString());
                 lux_value.setText(new Long(hitsList.getData().get(0).getData_model().getPayload().getLux()).toString());
@@ -70,6 +100,9 @@ public class Data extends Fragment {
         bmp_value_txtview = view.findViewById(R.id.BMP_value_txtview);
         soilMoisture_value = view.findViewById(R.id.soil_moisture_value_txtview);
         lux_value = view.findViewById(R.id.lux_value_txtview);
+        bmp_label_txtview = view.findViewById(R.id.BMP_label);
+        soilmoisture_label_txtview = view.findViewById(R.id.soil_moisture_label);
+        lux_label = view.findViewById(R.id.lux_label);
 
     }
 }
