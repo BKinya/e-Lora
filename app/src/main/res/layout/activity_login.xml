@@ -14,11 +14,10 @@
                 android:id="@+id/ilab_logo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ilabafrica"
+                android:src="@drawable/telkom"
                 android:scaleX=".46567"
                 android:scaleY=".46567"
-                android:scaleType="fitCenter"
-                android:paddingTop="@dimen/padding"/>
+                android:scaleType="fitCenter"/>
         <EditText
                 android:id="@+id/username_edit_txt"
                 android:layout_width="match_parent"
@@ -47,10 +46,10 @@
                 android:gravity="right"
                 android:text="@string/forgot_password"
                 android:layout_alignEnd="@+id/password_edit_txt"
-                android:padding="@dimen/padding"
+                android:padding="@dimen/dp4_padding"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textAllCaps="true"
-                android:textColor="@color/text_color_orange"
+                android:textColor="@color/text_color_cyan_600"
                 android:layout_marginVertical="@dimen/dp4_padding"/>
 
         <Button
@@ -58,12 +57,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/login"
-                android:background="@color/text_color_orange"
+                android:background="@color/text_color_cyan_600"
                 android:layout_marginHorizontal="@dimen/margin_horizontal"
                 android:padding="@dimen/padding"
                 android:layout_below="@+id/forgot_password_txt"
                 android:layout_marginVertical="@dimen/padding"
-                android:textColor="@color/color_white"/>
+                android:textColor="@color/color_white"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     </RelativeLayout>
 

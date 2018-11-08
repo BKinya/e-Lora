@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">e-IoT</string>
+    <string name="app_name">Telkom</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">Sign in</string>
@@ -22,36 +22,42 @@
     <string name="faq">FAQ</string>
     <string name="sign_out">Sign Out</string>
     <string name="altitude">Altitude:</string>
-    <string name="temperature">Temperature(*C)</string>
+    <string name="temperature">Temperature(°C)</string>
     <string name="time">Time:</string>
     <string name="humidity">Humidity(%)</string>
     <string name="dashboard">Dashboard</string>
     <string name="title_activity_agriculture">Agriculture</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="telkom_node">Telkom</string>
+    <string name="node">Node</string>
+    <string name="device_info">Device information</string>
 
 
     <string name="hello_blank_fragment">Hello Beatrice</string>
-    <string name="node_title">Nodes</string>
+    <string name="device_title">Device Info</string>
     <string name="data_title">Data</string>
     <string name="chart_title">Charts</string>
     <string name="location">Location</string>
-    <string name="average_temperature">Average Temperature(*C)</string>
+    <string name="average_temperature">Average Temperature(°C)</string>
     <string name="average_humidity">Average Humidity(%)</string>
     <string name="view_charts">View Charts</string>
     <string name="bmp">Pressure</string>
     <string name="signal_level">Signal Level</string>
     <string name="battery_level">Battery Level</string>
     <string-array name="nodes_elements">
-        <item>Node 1</item>
-        <item>Node 2</item>
+        <item>Ilab Node</item>
+        <item>Telkom Node</item>
     </string-array>
     <string name="uname">admin</string>
+    <string name="uname1">telkom</string>
     <string name="upass">012345</string>
     <string name="title_activity_nodes">Nodes</string>
     <string name="last_seen">Last Seen</string>
     <string name="lux">Lux</string>
     <string name="soil_moisture">Soil moisture</string>
     <string name="node_1">Node 1</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_node">Node</string>
 
 </resources>

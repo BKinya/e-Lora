@@ -67,14 +67,14 @@ public class Charts extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        bundle = this.getArguments();
-        selected_node = bundle.getString("node");
+//        bundle = this.getArguments();
+//        selected_node = bundle.getString("node");
 
-        if (selected_node.equals("Node 1")){
-            drawGraphs("lotech", rootView);
-        }else if (selected_node.equals("Node 2")){
-            drawGraphs("telkom", rootView);
-        }
+//        if (selected_node.equals("DeviceInfo 1")){
+//            drawGraphs("lotech", rootView);
+//        }else if (selected_node.equals("DeviceInfo 2")){
+//            drawGraphs("telkom", rootView);
+//        }
 
     }
 

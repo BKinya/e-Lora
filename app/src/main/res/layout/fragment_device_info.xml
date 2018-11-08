@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activities.fragments.DeviceInfo"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+
+
+            <!--<TextView-->
+                    <!--android:id="@+id/location_label_txtview"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:padding="@dimen/dp6_padding"-->
+                    <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+                    <!--android:textColor="@color/color_black"-->
+                    <!--android:text="@string/location"-->
+                    <!--android:textAlignment="center"/>-->
+
+            <!--<TextView-->
+                    <!--android:id="@+id/location_value_txtview"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+                    <!--android:padding="@dimen/dp6_padding"-->
+                    <!--android:textAlignment="center"/>-->
+
+            <TextView
+                    android:id="@+id/last_seen_txtview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/color_black"
+                    android:padding="@dimen/dp6_padding"
+                    android:textAlignment="center"
+                    android:text="@string/last_seen"/>
+
+            <TextView
+                    android:id="@+id/last_seen_value_txtview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+
+                    android:padding="@dimen/dp6_padding"
+                    android:textAlignment="center"/>
+
+            <TextView
+                    android:id="@+id/gateway_id_txtview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/color_black"
+                    android:padding="@dimen/dp6_padding"
+                    android:textAlignment="center"
+                    android:text="Gateway id"/>
+
+            <TextView
+                    android:id="@+id/gateway_id_value_txtview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:padding="@dimen/dp6_padding"
+                    android:textAlignment="center"/>
+
+            <TextView
+                    android:id="@+id/signal_level_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dp6_padding"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/color_black"
+                    android:text="@string/signal_level"
+                    android:textAlignment="center"/>
+
+            <TextView
+                    android:id="@+id/signal_level_value_txtview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textAlignment="center"
+                    android:padding="@dimen/dp6_padding"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

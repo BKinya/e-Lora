@@ -31,8 +31,7 @@ public class Data extends Fragment {
 
     private Bundle mbundle;
 
-    private TextView temp_value_txtview, humidity_value_txtview, bmp_value_txtview, soilMoisture_value, lux_value,
-    bmp_label_txtview, soilmoisture_label_txtview, lux_label;
+    private TextView temp_value_txtview, humidity_value_txtview;
     View rootview;
 
     public Data() {
@@ -51,16 +50,16 @@ public class Data extends Fragment {
 
     @Override
     public void onResume() {
-        super.onResume();
-        mbundle = this.getArguments();
-        node_selected = mbundle.getString("node");
+       super.onResume();
+//        mbundle = this.getArguments();
+//        node_selected = mbundle.getString("node");
 
 
-        if (node_selected.equals("Node 1")){
-            getData("lotech", rootview);
-        }else if (node_selected.equals("Node 2")){
-            getData("telkom", rootview);
-        }
+//        if (node_selected.equals("DeviceInfo 1")){
+//            getData("lotech", rootview);
+//        }else if (node_selected.equals("DeviceInfo 2")){
+//            getData("telkom", rootview);
+//        }
     }
 
     public void getData(final String index, final View view){
@@ -74,18 +73,7 @@ public class Data extends Fragment {
                 temp_value_txtview.setText(new Long(hitsList.getData().get(0).getData_model().getPayload().getTemperature()).toString());
                 humidity_value_txtview.setText(new Long(hitsList.getData().get(0).getData_model().getPayload().getHumidityy()).toString());
 
-                if (index.equals("telkom")){
-                    bmp_label_txtview.setVisibility(View.GONE);
-                    bmp_value_txtview.setVisibility(View.GONE);
-                    soilmoisture_label_txtview.setVisibility(View.GONE);
-                    soilMoisture_value.setVisibility(View.GONE);
-                    lux_label.setVisibility(View.GONE);
-                    lux_value.setVisibility(View.GONE);
-                }
-                bmp_value_txtview.setText(new Long(hitsList.getData().get(0).getData_model().getPayload().getPressure()).toString());
-                soilMoisture_value.setText(new Long(hitsList.getData().get(0).getData_model().getPayload().getSoil_moisture()).toString());
-                lux_value.setText(new Long(hitsList.getData().get(0).getData_model().getPayload().getLux()).toString());
-            }
+                 }
 
             @Override
             public void onFailure(Throwable throwable) {
@@ -97,12 +85,6 @@ public class Data extends Fragment {
     public  void getViews(View view){
         temp_value_txtview = view.findViewById(R.id.temp_value_txtview);
         humidity_value_txtview = view.findViewById(R.id.humidity_value_txtview);
-        bmp_value_txtview = view.findViewById(R.id.BMP_value_txtview);
-        soilMoisture_value = view.findViewById(R.id.soil_moisture_value_txtview);
-        lux_value = view.findViewById(R.id.lux_value_txtview);
-        bmp_label_txtview = view.findViewById(R.id.BMP_label);
-        soilmoisture_label_txtview = view.findViewById(R.id.soil_moisture_label);
-        lux_label = view.findViewById(R.id.lux_label);
 
     }
 }

@@ -40,13 +40,23 @@ public class Login extends AppCompatActivity {
         String password = password_edittext.getText().toString();
 
         //authentication
-        if (username.equals(getResources().getString(R.string.uname))&& password.equals(getResources().getString(R.string.upass))){
-            Log.d(TAG, "EQUAL");
-            startActivity(new Intent(Login.this, Home.class));
-        }else{
+        if(username.equals(getResources().getString(R.string.uname))){
+            if (password.equals(getResources().getString(R.string.upass))){
+                Intent i = new Intent(Login.this, MainActivity.class);
+                i.putExtra("user", username);
+                startActivity(i);
+            }else{
+                Toast.makeText(getApplicationContext(), "invalid credentials", Toast.LENGTH_LONG).show();
+            }
 
-            Toast.makeText(this, "Invalid Login", Toast.LENGTH_LONG).show();
-
+        }else if (username.equals(getResources().getString(R.string.uname1))){
+            if (password.equals(getResources().getString(R.string.upass))){
+                Intent i = new Intent(Login.this, MainActivity.class);
+                i.putExtra("user", username);
+                startActivity(i);
+            }else {
+                Toast.makeText(getApplicationContext(), "Invalid login", Toast.LENGTH_LONG).show();
+            }
         }
 
     }
