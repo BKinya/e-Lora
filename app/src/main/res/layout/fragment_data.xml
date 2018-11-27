@@ -55,6 +55,61 @@ android:orientation="vertical">
                 android:textAlignment="center"
                 android:padding="@dimen/dp6_padding"/>
 
+        <TextView
+                android:id="@+id/soil_moisuture_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp6_padding"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/color_black"
+                android:text="@string/soil_moisture"
+                android:textAlignment="center"/>
+
+        <TextView
+                android:id="@+id/soil_moisuture_value_txtview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAlignment="center"
+                android:padding="@dimen/dp6_padding"/>
+
+        <TextView
+                android:id="@+id/pressure_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp6_padding"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/color_black"
+                android:text="@string/bmp"
+                android:textAlignment="center"/>
+
+        <TextView
+                android:id="@+id/pressure_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAlignment="center"
+                android:padding="@dimen/dp6_padding"/>
+
+        <TextView
+                android:id="@+id/lux_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp6_padding"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/color_black"
+                android:text="@string/lux"
+                android:textAlignment="center"/>
+
+        <TextView
+                android:id="@+id/lux_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAlignment="center"
+                android:padding="@dimen/dp6_padding"/>
+
+
 
     </LinearLayout>
     </ScrollView>

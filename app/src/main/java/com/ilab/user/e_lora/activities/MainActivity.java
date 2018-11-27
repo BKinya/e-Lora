@@ -2,12 +2,9 @@ package com.ilab.user.e_lora.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,14 +13,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 import com.ilab.user.e_lora.R;
 import com.ilab.user.e_lora.activities.fragments.Dashboard;
 import com.ilab.user.e_lora.activities.fragments.Node;
 import com.ilab.user.e_lora.activities.fragments.NodeList;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener{
 
     String  username;
 
@@ -117,6 +113,8 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+
+
     public void addFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -124,5 +122,6 @@ public class MainActivity extends AppCompatActivity
         transaction.commit();
 
     }
+
 
 }

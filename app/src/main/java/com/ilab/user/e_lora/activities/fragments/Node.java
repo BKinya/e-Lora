@@ -55,4 +55,6 @@ public class Node extends Fragment {
         viewPager.setAdapter(sectionPageAdapter);
     }
 
+
+
 }

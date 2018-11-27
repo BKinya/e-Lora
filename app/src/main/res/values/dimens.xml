@@ -2,7 +2,7 @@
 <resources>
     <dimen name="margin_horizontal">16dp</dimen>
     <dimen name="margin_top">40dp</dimen>
-    <dimen name="padding">9dp</dimen>
+    <dimen name="padding">6dp</dimen>
     <dimen name="dp6_padding">6dp</dimen>
     <dimen name="margin_vertical">32dp</dimen>
 

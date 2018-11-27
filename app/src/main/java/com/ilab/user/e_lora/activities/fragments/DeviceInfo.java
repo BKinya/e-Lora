@@ -1,19 +1,28 @@
 package com.ilab.user.e_lora.activities.fragments;
 
 
+import Rest.ApiClient;
+import Rest.ApiInterface;
+import adapter.GatewaysAdapater;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import com.ilab.user.e_lora.R;
-import model.Gateway;
-import model.HitsList;
-import utils.PayLoadResponses;
-import utils.PayLoadResponsesCallbacks;
+import model.DataModel;
+import model.Gateway_fields;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -25,18 +34,17 @@ public class DeviceInfo extends Fragment {
 
     private static final String TAG = DeviceInfo.class.getSimpleName();
 
-    PayLoadResponses payLoadResponses;
-    HitsList hitsList;
-
-
     //views
     private TextView location_label_txtview, location_value_txtview, last_seen_txtview, gateway_id_txtxview, signal_level_txtview;
+    private RecyclerView recyclerView;
+
+    private GatewaysAdapater adapater;
 
     View rootView;
 
-    String node_select;
-    private Bundle bundle;
+    ApiInterface apiInterface;
 
+    private ArrayList<Gateway_fields> gateway_fields = new ArrayList<>();
     //Nodes_data_charts nodes_data_charts;
     public DeviceInfo() {
         // Required empty public constructor
@@ -48,32 +56,21 @@ public class DeviceInfo extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_device_info, container, false);
+        recyclerView = rootView.findViewById(R.id.gateways_recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getBaseContext()));
+
+
 
 
         return rootView;
     }
 
-    /**
-     * String dateTxt;
-     *     private Bundle bundle;
-     *
-     *     //within OncreateView
-     *      bundle = this.getArguments();
-     *         dateTxt = bundle.getString("DATE");
-     *         Log.e("DATE_FRAG_INBOUND",""+dateTxt);
-     */
+
     @Override
     public void onResume() {
         super.onResume();
+        getPayload();
 
-
-//        bundle = this.getArguments();
-//        node_select = bundle.getString("node");
-//        if (node_select.equals("DeviceInfo 1")){
-//            receive_payload("lotech", rootView);
-//        }else if (node_select.equals("DeviceInfo 2")){
-//            receive_payload("telkom", rootView);
-//        }
 
     }
 
@@ -81,45 +78,25 @@ public class DeviceInfo extends Fragment {
      * receive payload and display to the user
      *
      */
-    public void receive_payload(String index, final View view) {
-        payLoadResponses = new PayLoadResponses();
-        payLoadResponses.get_most_recent_documents(index, new PayLoadResponsesCallbacks() {
+    public void getPayload() {
+        apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Call<DataModel> call = apiInterface.getPayLoadData();
+        call.enqueue(new Callback<DataModel>() {
             @Override
-            public void onSuccess(HitsList hitsList) {
-                long temperature = hitsList.getData().get(0).getData_model().getPayload().getTemperature();
-                getViews(view);
-
-
-
-//                location_label_txtview.setVisibility(View.GONE);
-//                location_value_txtview.setVisibility(View.GONE);
-
-                /**
-                 * convert date to string
-                 */
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-                String date = simpleDateFormat.format(hitsList.getData().get(0).getData_model().getMetadata().getTime());
-                last_seen_txtview.setText(date);
-
-                //Gateway
-                ArrayList<Gateway> gateways = hitsList.getData().get(0).getData_model().getMetadata().getGateways();
-                String gateway_id = gateways.get(0).getGateway_id();
-                String signal_level = new Long(gateways.get(0).getRssi()).toString();
-
-
-                gateway_id_txtxview.setText(gateway_id);
-                signal_level_txtview.setText(signal_level);
-
-
+            public void onResponse(Call<DataModel> call, Response<DataModel> response) {
+                gateway_fields = response.body().getPayloads().get(0).getMetadata().getGateway_fields();
+                recyclerView.setAdapter(new GatewaysAdapater(gateway_fields, getActivity().getBaseContext(), R.layout.gateways_list_item));
 
 
             }
 
             @Override
-            public void onFailure(Throwable throwable) {
-                Log.e(TAG, "ERRORT "+throwable.getMessage());
+            public void onFailure(Call<DataModel> call, Throwable t) {
+                Log.e(TAG, "ERROR " +t.getMessage());
             }
         });
+
+
     }
 
     public void getViews(View view){
