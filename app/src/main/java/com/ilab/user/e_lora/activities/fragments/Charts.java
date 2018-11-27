@@ -1,21 +1,27 @@
 package com.ilab.user.e_lora.activities.fragments;
 
 
+import Rest.ApiClient;
+import Rest.ApiInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ListView;
 import com.ilab.user.e_lora.R;
 import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
-import model.HitsList;
-import utils.PayLoadResponses;
-import utils.PayLoadResponsesCallbacks;
+import model.DataFields;
+import model.DataModel;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -26,25 +32,24 @@ import java.util.Date;
  */
 public class Charts extends Fragment {
 
-    private static  final String TAG = Charts.class.getSimpleName();
-
-    PayLoadResponses payLoadResponses;
+    private static final String TAG = Charts.class.getSimpleName();
 
     //graphview
     private GraphView graphView_t, graphView_h;
     View rootView;
 
-    private Bundle bundle;
+    ApiInterface apiInterface;
 
+    private ArrayList<DataFields> datalist = new ArrayList<>();
+    private ArrayList<Long> temp_value = new ArrayList<>();
+    private ArrayList<Long> humidity_value = new ArrayList<>();
+    private ArrayList<Date> time_value = new ArrayList<>();
 
-    ArrayList<Long> temp_value;
-    ArrayList<Long> humidity_value;
-    ArrayList<Date> time_value;
-    String selected_node;
-
-    //simpleDateFormatter
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
 
+
+    //linegraph series
+    private LineGraphSeries<DataPoint> series;
 
     public Charts() {
         // Required empty public constructor
@@ -60,111 +65,84 @@ public class Charts extends Fragment {
         graphView_t = rootView.findViewById(R.id.temp_graph);
         graphView_h = rootView.findViewById(R.id.humidity_graph);
 
+        getPayloadData();
 
         return rootView;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-//        bundle = this.getArguments();
-//        selected_node = bundle.getString("node");
+    /**
+     * get data from the API
+     * use the data to plot graphs: temperature graph and humidity graph
+     */
+    private void getPayloadData() {
+        apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Call<DataModel> call = apiInterface.getPayLoadData();
+        call.enqueue(new Callback<DataModel>() {
+            @Override
+            public void onResponse(Call<DataModel> call, Response<DataModel> response) {
+                datalist = response.body().getPayloads();
+                for (int i = 0; i < datalist.size(); i++) {
+                    temp_value.add(datalist.get(i).getPayload_fields().getTemperature());
+                    humidity_value.add(datalist.get(i).getPayload_fields().getHumidity());
+                    time_value.add(datalist.get(i).getMetadata().getTime());
 
-//        if (selected_node.equals("DeviceInfo 1")){
-//            drawGraphs("lotech", rootView);
-//        }else if (selected_node.equals("DeviceInfo 2")){
-//            drawGraphs("telkom", rootView);
-//        }
+                }
+
+                //temperature graph
+                drawGraphs(graphView_t, time_value, temp_value);
+
+                //humidity graph
+                drawGraphs(graphView_h, time_value, humidity_value);
+
+
+            }
+
+            @Override
+            public void onFailure(Call<DataModel> call, Throwable t) {
+                Log.e(TAG, "ERROR" + t.getMessage());
+            }
+        });
+
 
     }
 
-    public void drawGraphs(String index, View view) {
-        payLoadResponses = new PayLoadResponses();
-        payLoadResponses.get_most_recent_documents(index, new PayLoadResponsesCallbacks() {
+    /**
+     * Draw a graph
+     *
+     * @param graphView
+     * @param Y_axis
+     * @param X_axis
+     */
+
+    public void drawGraphs(GraphView graphView, ArrayList<Date> X_axis, ArrayList<Long> Y_axis) {
+
+        //set minimum and maximum bound for x axis
+        graphView.getViewport().setYAxisBoundsManual(true);
+        graphView.getViewport().setMinY(getMinValue(Y_axis) - 3);
+        graphView.getViewport().setMaxY(getMaxValue(Y_axis) + 3);
+
+        //set y_axis label
+        //graphView.getGridLabelRenderer().setVerticalAxisTitle(y_axis_label);
+
+        //draw the graph
+        series = new LineGraphSeries<>();
+        for (int i = Y_axis.size() - 1; i >= 0; i--) {
+            series.appendData(new DataPoint(X_axis.get(i), Y_axis.get(i)), true, X_axis.size());
+        }
+
+        graphView.addSeries(series);
+        graphView.getViewport().setScrollable(true);
+        graphView.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
             @Override
-            public void onSuccess(HitsList hitsList) {
-//
-                temp_value = new ArrayList<Long>();
-                humidity_value = new ArrayList<Long>();
-                time_value = new ArrayList<Date>();
-                for (int i = 0; i < hitsList.getData().size(); i++) {
-                    time_value.add(hitsList.getData().get(i).getData_model().getMetadata().getTime());
-                    temp_value.add(hitsList.getData().get(i).getData_model().getPayload().getTemperature());
-                    humidity_value.add(hitsList.getData().get(i).getData_model().getPayload().getHumidityy());
-
-
+            public String formatLabel(double value, boolean isValueX) {
+                if (isValueX) {
+                    return simpleDateFormat.format(new Date((long) value));
+                } else {
+                    return super.formatLabel(value, isValueX);
                 }
-
-
-
-                //temperature graph
-                graphView_t.getViewport().setYAxisBoundsManual(true);
-                graphView_t.getViewport().setMinY(getMinValue(temp_value) - 5);
-                graphView_t.getViewport().setMaxY(getMaxValue(temp_value) + 5);
-                graphView_t.getGridLabelRenderer().setVerticalAxisTitle("temp(*c)");
-//                graphView_t.getViewport().setScalable(true);
-//                graphView_t.getViewport().setScalableY(true);
-                LineGraphSeries<DataPoint> series = new LineGraphSeries<>();
-                for (int i = temp_value.size() - 1; i >= 0; i--) {
-                    Log.d(TAG, "TEMP " + hitsList.getData().get(i).getData_model().getPayload().getTemperature());
-                    series.appendData(new DataPoint(time_value.get(i), temp_value.get(i)), true, temp_value.size());
-                }
-
-                graphView_t.addSeries(series);
-                // graphView_t.getViewport().setScalable(true);
-                graphView_t.getViewport().setScrollable(true);
-                //graphView_t.getViewport().setScalableY(true);
-                graphView_t.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
-                    @Override
-                    public String formatLabel(double value, boolean isValueX) {
-                        if (isValueX) {
-                            return simpleDateFormat.format(new Date((long) value));
-                        } else {
-                            return super.formatLabel(value, isValueX);
-                        }
-                    }
-                });
-//
-//                /**
-//                 * humidity graph
-//                 */
-//
-                graphView_h.getViewport().setYAxisBoundsManual(true);
-                graphView_h.getViewport().setMaxY(getMaxValue(humidity_value) + 5);
-                graphView_h.getViewport().setMinY(getMinValue(humidity_value) - 5);
-                graphView_h.getViewport().setScrollable(true);
-//                graphView_h.getViewport().setScalable(true);
-//                graphView_h.getViewport().setScalableY(true);
-
-                graphView_h.getGridLabelRenderer().setVerticalAxisTitle("humidity(%)");
-                LineGraphSeries<DataPoint> series1 = new LineGraphSeries<>();
-                for (int j = humidity_value.size()-1; j>=0; j--){
-
-                    series1.appendData(new DataPoint(time_value.get(j), humidity_value.get(j)), true, humidity_value.size());
-
-                    Log.d(TAG,"HUMIDITY "+hitsList.getData().get(j).getData_model().getPayload().getHumidityy());
-                    Log.d(TAG, "TIME"+hitsList.getData().get(j).getData_model().getMetadata().getTime());
-                }
-                graphView_h.addSeries(series1);
-                graphView_h.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter(){
-                    @Override
-                    public String formatLabel(double value, boolean isValueX) {
-                        if (isValueX){
-                            return simpleDateFormat.format(new Date((long) value));
-                        }else {
-                            return super.formatLabel(value, isValueX);
-                        }
-                    }
-                });
-//
-//
-            }
-
-            @Override
-            public void onFailure(Throwable throwable) {
-
             }
         });
+
 
     }
 
@@ -200,5 +178,18 @@ public class Charts extends Fragment {
             }
         }
         return maxValue;
+    }
+
+    //
+    private DataPoint[] generateDataPoints(ArrayList<Date> x_axis, ArrayList<Long> y_axis) {
+        int count = x_axis.size();
+        DataPoint[] dataPoints = new DataPoint[count];
+        for (int i = 0; i < count; i++) {
+            Date x = x_axis.get(i);
+            long y = y_axis.get(i);
+            DataPoint d = new DataPoint(x, y);
+            dataPoints[i] = d;
+        }
+        return dataPoints;
     }
 }

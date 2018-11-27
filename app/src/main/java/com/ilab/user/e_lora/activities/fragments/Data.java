@@ -12,10 +12,13 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 import com.ilab.user.e_lora.R;
-import model.HitsList;
+import model.DataFields;
+import model.DataModel;
 import retrofit2.Call;
-import utils.PayLoadResponses;
-import utils.PayLoadResponsesCallbacks;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,13 +28,14 @@ public class Data extends Fragment {
     private static final  String TAG = Data.class.getSimpleName();
 
     ApiInterface apiInterface;
-    PayLoadResponses payLoadResponses;
+
 
     String node_selected;
+    private ArrayList<DataFields> dataFields = new ArrayList<>();
 
-    private Bundle mbundle;
 
-    private TextView temp_value_txtview, humidity_value_txtview;
+
+    private TextView temp_value_txtview, humidity_value_txtview, soil_moisture_txtview, pressure_txtview, lux_txtview;
     View rootview;
 
     public Data() {
@@ -44,6 +48,11 @@ public class Data extends Fragment {
                              Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.fragment_data, container, false);
         // Inflate the layout for this fragment
+        temp_value_txtview = rootview.findViewById(R.id.temp_value_txtview);
+        humidity_value_txtview = rootview.findViewById(R.id.humidity_value_txtview);
+        soil_moisture_txtview = rootview.findViewById(R.id.soil_moisuture_value_txtview);
+        pressure_txtview = rootview.findViewById(R.id.pressure_value);
+        lux_txtview = rootview.findViewById(R.id.lux_value);
 
         return rootview;
     }
@@ -51,40 +60,44 @@ public class Data extends Fragment {
     @Override
     public void onResume() {
        super.onResume();
-//        mbundle = this.getArguments();
-//        node_selected = mbundle.getString("node");
+       getData();
 
-
-//        if (node_selected.equals("DeviceInfo 1")){
-//            getData("lotech", rootview);
-//        }else if (node_selected.equals("DeviceInfo 2")){
-//            getData("telkom", rootview);
-//        }
+//
     }
 
-    public void getData(final String index, final View view){
-        payLoadResponses = new PayLoadResponses();
-        payLoadResponses.get_most_recent_documents(index, new PayLoadResponsesCallbacks() {
+    private void getData(){
+        apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Call<DataModel> call = apiInterface.getPayLoadData();
+        call.enqueue(new Callback<DataModel>() {
             @Override
-            public void onSuccess(HitsList hitsList) {
-                getViews(view);
+            public void onResponse(Call<DataModel> call, Response<DataModel> response) {
+                dataFields = response.body().getPayloads();
 
+                //string values from the payload
+                String temperature = String.valueOf(dataFields.get(0).getPayload_fields().getTemperature());
+                String humidity = String.valueOf(dataFields.get(0).getPayload_fields().getHumidity());
+                String soilMoisture = String.valueOf(dataFields.get(0).getPayload_fields().getSoil_moisture());
+                String pressure = String.valueOf(dataFields.get(0).getPayload_fields().getPressure());
+                String lux = String.valueOf(dataFields.get(0).getPayload_fields().getLux());
 
-                temp_value_txtview.setText(new Long(hitsList.getData().get(0).getData_model().getPayload().getTemperature()).toString());
-                humidity_value_txtview.setText(new Long(hitsList.getData().get(0).getData_model().getPayload().getHumidityy()).toString());
+                //set values on the respective text views
+                temp_value_txtview.setText(temperature);
+                humidity_value_txtview.setText(humidity);
+                soil_moisture_txtview.setText(soilMoisture);
+                pressure_txtview.setText(pressure);
+                lux_txtview.setText(lux);
 
-                 }
+            }
 
             @Override
-            public void onFailure(Throwable throwable) {
-                Log.e(TAG, "ERROR "+throwable.getMessage());
+            public void onFailure(Call<DataModel> call, Throwable t) {
+                Log.e(TAG, "ERROR " + t.getMessage());
             }
         });
-    }
-
-    public  void getViews(View view){
-        temp_value_txtview = view.findViewById(R.id.temp_value_txtview);
-        humidity_value_txtview = view.findViewById(R.id.humidity_value_txtview);
 
     }
+
+
+
+
 }
